@@ -41,6 +41,18 @@ Using `uv`:
 uv sync --extra dev
 ```
 
+Using `pip`:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+For development and tests with `pip`:
+
+```bash
+python -m pip install -e ".[dev]"
+```
+
 ## Usage
 
 ### 1. Write a normal Tello script
@@ -75,6 +87,12 @@ if __name__ == "__main__":
 uv run tello-demo run examples/sanity_test.py --mode sim
 ```
 
+Pip-installed equivalent:
+
+```bash
+python -m tello_demo run examples/sanity_test.py --mode sim
+```
+
 This opens a live 3D view and executes the script in real time.
 
 If you want to keep the final frame open after the script finishes, add `--hold`.
@@ -85,6 +103,12 @@ If you want to keep the final frame open after the script finishes, add `--hold`
 uv run tello-demo run examples/sanity_test.py --mode real
 ```
 
+Pip-installed equivalent:
+
+```bash
+python -m tello_demo run examples/sanity_test.py --mode real
+```
+
 ### Minimal real-drone sanity check
 
 If you want the smallest possible Tello test, use:
@@ -93,10 +117,22 @@ If you want the smallest possible Tello test, use:
 uv run tello-demo run examples/takeoff_land.py --mode real
 ```
 
+Pip-installed equivalent:
+
+```bash
+python -m tello_demo run examples/takeoff_land.py --mode real
+```
+
 Or preview it first in sim mode:
 
 ```bash
 uv run tello-demo run examples/takeoff_land.py --mode sim
+```
+
+Pip-installed equivalent:
+
+```bash
+python -m tello_demo run examples/takeoff_land.py --mode sim
 ```
 
 ## Supported simulated command subset
@@ -170,4 +206,10 @@ See `TECHNICAL_DESIGN.md` for the architecture and critical chain.
 
 ```bash
 uv run pytest
+```
+
+Pip users can run:
+
+```bash
+python -m pytest
 ```
