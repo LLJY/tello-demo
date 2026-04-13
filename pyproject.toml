@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tello-demo"
+version = "0.1.0"
+description = "DJI Tello real/sim runner with live 3D visualization"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "djitellopy==2.5.0",
+  "matplotlib==3.10.8",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.0.3",
+]
+
+[project.scripts]
+tello-demo = "tello_demo.runner:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tello_demo"]
