@@ -55,6 +55,37 @@ python -m pip install -e ".[dev]"
 
 ## Usage
 
+### Studio launcher
+
+The project now includes a simple studio launcher for a fixed scripts folder workflow.
+
+Run it with:
+
+```bash
+python -m tello_demo.studio
+```
+
+The studio launcher:
+
+- uses a fixed workspace under `~/.tello-demo/studio/`
+- shows scripts from `~/.tello-demo/studio/scripts/`
+- keeps its own managed runtime venv under `~/.tello-demo/studio/venv/`
+- runs regular Python scripts normally
+- routes detected Tello scripts through the existing simulator by default
+
+Current Tello detection rule:
+
+- the script imports `djitellopy`
+- and it creates a `Tello()` object
+
+If both are true, the studio treats it as a Tello script. Otherwise it runs it as normal Python.
+
+Notes:
+
+- the studio opens the existing Matplotlib simulator in a separate window for sim runs
+- real mode is gated by a daily UTC PIN inside the app
+- on some Linux systems, `tkinter` may need to be installed separately by the OS package manager
+
 ### 1. Write a normal Tello script
 
 Example: `examples/sanity_test.py`
