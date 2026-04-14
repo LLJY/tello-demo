@@ -89,7 +89,7 @@ Notes:
 
 ### 1. Write a normal Tello script
 
-Example: `examples/sanity_test.py`
+Example: `scripts/examples/sanity_test.py`
 
 ```python
 from djitellopy import Tello
@@ -116,13 +116,13 @@ if __name__ == "__main__":
 ### 2. Run it in sim mode
 
 ```bash
-uv run tello-demo run examples/sanity_test.py --mode sim
+uv run tello-demo run scripts/examples/sanity_test.py --mode sim
 ```
 
 Pip-installed equivalent:
 
 ```bash
-python -m tello_demo run examples/sanity_test.py --mode sim
+python -m tello_demo run scripts/examples/sanity_test.py --mode sim
 ```
 
 This opens a live 3D view and executes the script in real time.
@@ -132,13 +132,13 @@ If you want to keep the final frame open after the script finishes, add `--hold`
 ### 3. Run it in real mode
 
 ```bash
-uv run tello-demo run examples/sanity_test.py --mode real
+uv run tello-demo run scripts/examples/sanity_test.py --mode real
 ```
 
 Pip-installed equivalent:
 
 ```bash
-python -m tello_demo run examples/sanity_test.py --mode real
+python -m tello_demo run scripts/examples/sanity_test.py --mode real
 ```
 
 ### Minimal real-drone sanity check
@@ -146,25 +146,25 @@ python -m tello_demo run examples/sanity_test.py --mode real
 If you want the smallest possible Tello test, use:
 
 ```bash
-uv run tello-demo run examples/takeoff_land.py --mode real
+uv run tello-demo run scripts/examples/takeoff_land.py --mode real
 ```
 
 Pip-installed equivalent:
 
 ```bash
-python -m tello_demo run examples/takeoff_land.py --mode real
+python -m tello_demo run scripts/examples/takeoff_land.py --mode real
 ```
 
 Or preview it first in sim mode:
 
 ```bash
-uv run tello-demo run examples/takeoff_land.py --mode sim
+uv run tello-demo run scripts/examples/takeoff_land.py --mode sim
 ```
 
 Pip-installed equivalent:
 
 ```bash
-python -m tello_demo run examples/takeoff_land.py --mode sim
+python -m tello_demo run scripts/examples/takeoff_land.py --mode sim
 ```
 
 ## Supported simulated command subset
@@ -228,7 +228,7 @@ Use the real mode demo carefully:
 - keep the first real mission short and simple
 - do not test flips indoors unless you know exactly what you are doing
 
-The included `examples/sanity_test.py` avoids flips on purpose.
+The included `scripts/examples/sanity_test.py` avoids flips on purpose.
 
 ## Project layout
 
