@@ -7,6 +7,13 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
+def _project_root() -> Path:
+    for parent in Path(__file__).resolve().parents:
+        if (parent / "pyproject.toml").is_file():
+            return parent
+    raise FileNotFoundError("Could not locate project root from studio package")
+
+
 @dataclass(frozen=True, slots=True)
 class StudioWorkspace:
     root: Path
@@ -23,11 +30,17 @@ def default_workspace_root() -> Path:
     return home / ".tello-demo" / "studio"
 
 
-def resolve_workspace(root: Path | None = None) -> StudioWorkspace:
+def default_scripts_dir() -> Path:
+    return _project_root() / "scripts"
+
+
+def resolve_workspace(
+    root: Path | None = None, *, scripts_dir: Path | None = None
+) -> StudioWorkspace:
     workspace_root = (root or default_workspace_root()).expanduser().resolve()
     return StudioWorkspace(
         root=workspace_root,
-        scripts_dir=workspace_root / "scripts",
+        scripts_dir=(scripts_dir or default_scripts_dir()).expanduser().resolve(),
         venv_dir=workspace_root / "venv",
         logs_dir=workspace_root / "logs",
     )

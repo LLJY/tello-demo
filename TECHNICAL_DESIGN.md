@@ -153,26 +153,22 @@ tello-studio
 - `print("hello world")` → console shows `hello world`
 - `djitellopy` script with `Tello()` creation → simulator window opens and the script output still appears in the launcher console
 
-## 4. Proposed filesystem layout
+## 4. Filesystem layout
 
-This path should remain configurable later, but the MVP should start with a single default location.
+The current implementation now splits script editing from runtime management.
 
-### Proposed default root
+### Current layout
 
-`~/.tello-demo/studio/`
-
-### Proposed layout
-
-- `scripts/` — user-managed Python scripts
-- `venv/` — managed virtual environment for the launcher runtime
-- `logs/` — run logs if persistent logging is added
-- `config.json` — optional later; not required for first MVP
+- project-local `./scripts/` — user-managed Python scripts
+- project-local `./scripts/examples/` — quick-start examples bundled with the repo
+- managed runtime under `~/.tello-demo/studio/venv/`
+- managed logs under `~/.tello-demo/studio/logs/`
 
 ### Rationale
 
-- keeps user scripts separate from the repository
+- makes scripts easy to find and edit directly from the project checkout
 - avoids drag/drop complexity
-- gives a stable place for teachers/students to copy files
+- gives users visible starter scripts inside the repo itself
 - allows the launcher to remain open while files change outside the app
 
 ## 5. Runtime environment design

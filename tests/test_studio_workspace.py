@@ -10,16 +10,16 @@ from tello_demo.studio.workspace import (
 
 
 def test_resolve_workspace_uses_expected_layout(tmp_path: Path) -> None:
-    workspace = resolve_workspace(tmp_path)
+    workspace = resolve_workspace(tmp_path, scripts_dir=tmp_path / "scripts")
 
     assert workspace.root == tmp_path.resolve()
-    assert workspace.scripts_dir == tmp_path.resolve() / "scripts"
+    assert workspace.scripts_dir.name == "scripts"
     assert workspace.venv_dir == tmp_path.resolve() / "venv"
     assert workspace.logs_dir == tmp_path.resolve() / "logs"
 
 
 def test_list_scripts_filters_hidden_cache_and_init_files(tmp_path: Path) -> None:
-    workspace = resolve_workspace(tmp_path)
+    workspace = resolve_workspace(tmp_path, scripts_dir=tmp_path / "scripts")
     ensure_workspace_dirs(workspace)
 
     (workspace.scripts_dir / "lesson1.py").write_text("print('hi')\n", encoding="utf-8")

@@ -67,8 +67,8 @@ python -m tello_demo.studio
 
 The studio launcher:
 
-- uses a fixed workspace under `~/.tello-demo/studio/`
-- shows scripts from `~/.tello-demo/studio/scripts/`
+- uses a project-local scripts folder at `./scripts/`
+- ships quick-start examples under `./scripts/examples/`
 - keeps its own managed runtime venv under `~/.tello-demo/studio/venv/`
 - runs regular Python scripts normally
 - routes detected Tello scripts through the existing simulator by default
@@ -84,6 +84,7 @@ Notes:
 
 - the studio opens the existing Matplotlib simulator in a separate window for sim runs
 - real mode is gated by a daily UTC PIN inside the app
+- users should edit scripts directly in `./scripts/` with their preferred editor
 - on some Linux systems, `tkinter` may need to be installed separately by the OS package manager
 
 ### 1. Write a normal Tello script
